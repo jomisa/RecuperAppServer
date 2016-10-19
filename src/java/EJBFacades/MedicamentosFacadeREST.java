@@ -69,6 +69,14 @@ public class MedicamentosFacadeREST extends AbstractFacade<Medicamentos> {
     public List<Medicamentos> findAll() {
         return super.findAll();
     }
+    
+    @GET
+    @Path("misMedicamentos/{cedula}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Medicamentos> misMedicamentos(@PathParam("cedula") Integer c) {
+        System.out.println(c);
+        return super.findAll();
+    }
 
     @GET
     @Path("{from}/{to}")
