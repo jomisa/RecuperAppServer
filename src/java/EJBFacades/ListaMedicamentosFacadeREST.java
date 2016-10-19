@@ -38,8 +38,9 @@ public class ListaMedicamentosFacadeREST extends AbstractFacade<ListaMedicamento
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(ListaMedicamentos entity) {
-        super.create(entity);
+    @Produces(MediaType.APPLICATION_JSON)
+    public ListaMedicamentos create(ListaMedicamentos entity) {
+        return super.create(entity);
     }
 
     @PUT

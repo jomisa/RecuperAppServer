@@ -38,8 +38,9 @@ public class ListaSintomasFacadeREST extends AbstractFacade<ListaSintomas> {
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(ListaSintomas entity) {
-        super.create(entity);
+    @Produces(MediaType.APPLICATION_JSON)
+    public ListaSintomas create(ListaSintomas entity) {
+        return super.create(entity);
     }
 
     @PUT

@@ -38,8 +38,9 @@ public class AnimoFacadeREST extends AbstractFacade<Animo> {
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Animo entity) {
-        super.create(entity);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Animo create(Animo entity) {
+        return super.create(entity);
     }
 
     @PUT

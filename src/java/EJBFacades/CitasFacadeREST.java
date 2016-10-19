@@ -38,8 +38,9 @@ public class CitasFacadeREST extends AbstractFacade<Citas> {
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Citas entity) {
-        super.create(entity);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Citas create(Citas entity) {
+        return super.create(entity);
     }
 
     @PUT

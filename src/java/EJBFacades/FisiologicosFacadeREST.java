@@ -38,8 +38,9 @@ public class FisiologicosFacadeREST extends AbstractFacade<Fisiologicos> {
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Fisiologicos entity) {
-        super.create(entity);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Fisiologicos create(Fisiologicos entity) {
+        return super.create(entity);
     }
 
     @PUT

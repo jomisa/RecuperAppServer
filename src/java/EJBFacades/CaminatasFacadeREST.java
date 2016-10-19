@@ -38,8 +38,9 @@ public class CaminatasFacadeREST extends AbstractFacade<Caminatas> {
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Caminatas entity) {
-        super.create(entity);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Caminatas create(Caminatas entity) {
+        return super.create(entity);
     }
 
     @PUT
