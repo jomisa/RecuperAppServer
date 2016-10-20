@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package EJBFacades;
-
 import Entities.Medicamentos;
+import Entities.MisMedicamentos;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -69,13 +72,18 @@ public class MedicamentosFacadeREST extends AbstractFacade<Medicamentos> {
     public List<Medicamentos> findAll() {
         return super.findAll();
     }
-    
+
     @GET
     @Path("misMedicamentos/{cedula}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Medicamentos> misMedicamentos(@PathParam("cedula") Integer c) {
+    public List<MisMedicamentos> misMedicamentos(@PathParam("cedula") Integer c) {
+        
         System.out.println(c);
-        return super.findAll();
+        
+        TypedQuery<MisMedicamentos> misMedicamentosquery = em.createNamedQuery("misMedicamentos", MisMedicamentos.class);
+        List<MisMedicamentos> misMedicamentos = misMedicamentosquery.getResultList();
+        
+        return misMedicamentos;
     }
 
     @GET
@@ -96,5 +104,5 @@ public class MedicamentosFacadeREST extends AbstractFacade<Medicamentos> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }
