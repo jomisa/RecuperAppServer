@@ -20,12 +20,11 @@ import javax.persistence.NamedNativeQuery;
 @Entity
 @NamedNativeQuery(
  name="misMedicamentos", 
- query = "SELECT m.ID_MEDICAMENTO as idMed, lm.NOMBRE as nombreMed, lm.DOSIS as dosis, m.FRECUENCIA as frecuencia, m.HORA as hora, ls.SINTOMA as sintoma, m.ASIGNADO as asignado " +
-                "FROM tabla_medicamentos m, tabla_lista_medicamentos lm, tabla_lista_sintomas ls " +
+ query = "SELECT m.ID_MEDICAMENTO as idMed, lm.NOMBRE as nombreMed, lm.DOSIS as dosis, m.FRECUENCIA as frecuencia, m.HORA as hora, lsm.SINTOMA as sintoma, m.ASIGNADO as asignado " +
+                "FROM tabla_medicamentos m, tabla_lista_medicamentos lm, tabla_lista_sintomas_medicamentos lsm " +
                 "WHERE m.ID_MEDICAMENTO = lm.ID_MEDICAMENTO " +
-                "and lm.ID_SINTOMA=ls.ID_SINTOMA " +
-                "and m.CEDULA = ?1", 
- resultClass = MisMedicamentos.class)
+                "and lm.ID_SINTOMA=lsm.ID_SINTOMA_MEDICAMENTO " +
+                "and m.CEDULA = ?1", resultClass = MisMedicamentos.class)
 public class MisMedicamentos implements Serializable {
 
     private static final long serialVersionUID = 1L;

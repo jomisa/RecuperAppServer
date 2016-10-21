@@ -34,7 +34,9 @@ public class ApplicationConfig extends Application {
         resources.add(EJBFacades.CitasFacadeREST.class);
         resources.add(EJBFacades.FisiologicosFacadeREST.class);
         resources.add(EJBFacades.ListaMedicamentosFacadeREST.class);
+        resources.add(EJBFacades.ListaSintomasCaminataFacadeREST.class);
         resources.add(EJBFacades.ListaSintomasFacadeREST.class);
+        resources.add(EJBFacades.ListaSintomasMedicamentosFacadeREST.class);
         resources.add(EJBFacades.MedicamentosFacadeREST.class);
         resources.add(EJBFacades.PacientesFacadeREST.class);
         resources.add(EJBFacades.SintomasFacadeREST.class);
