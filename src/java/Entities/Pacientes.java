@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Pacientes.findByActivo", query = "SELECT p FROM Pacientes p WHERE p.activo = :activo"),
     @NamedQuery(name = "Pacientes.findByNombres", query = "SELECT p FROM Pacientes p WHERE p.nombres = :nombres"),
     @NamedQuery(name = "Pacientes.findByApellidos", query = "SELECT p FROM Pacientes p WHERE p.apellidos = :apellidos"),
-    @NamedQuery(name = "Pacientes.findByCorreo", query = "SELECT p FROM Pacientes p WHERE p.correo = :correo")})
+    @NamedQuery(name = "Pacientes.findByCorreo", query = "SELECT p FROM Pacientes p WHERE p.correo = :correo"),
+    @NamedQuery(name = "verificarPaciente", query = "SELECT p FROM Pacientes p WHERE p.cedula = ?1 AND p.contrasena = ?2")})
 public class Pacientes implements Serializable {
 
     private static final long serialVersionUID = 1L;

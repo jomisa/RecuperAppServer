@@ -6,6 +6,7 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ import javax.persistence.NamedNativeQuery;
                 "FROM tabla_medicamentos m, tabla_lista_medicamentos lm, tabla_lista_sintomas ls " +
                 "WHERE m.ID_MEDICAMENTO = lm.ID_MEDICAMENTO " +
                 "and lm.ID_SINTOMA=ls.ID_SINTOMA " +
-                "and m.CEDULA = '1113651779'", 
+                "and m.CEDULA = ?1", 
  resultClass = MisMedicamentos.class)
 public class MisMedicamentos implements Serializable {
 

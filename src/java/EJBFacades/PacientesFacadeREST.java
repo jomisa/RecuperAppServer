@@ -10,6 +10,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -61,6 +63,16 @@ public class PacientesFacadeREST extends AbstractFacade<Pacientes> {
     @Produces(MediaType.APPLICATION_JSON)
     public Pacientes find(@PathParam("id") Integer id) {
         return super.find(id);
+    }
+    
+    @GET
+    @Path("findPaciente/{cedula}/{contrasena}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Pacientes findPaciente(@PathParam("cedula") Integer cedula, @PathParam("contrasena") String contrasena) {
+        TypedQuery<Pacientes> queryFindCedula = em.createNamedQuery("verificarPaciente",Pacientes.class);
+        queryFindCedula.setParameter(1, cedula);
+        queryFindCedula.setParameter(2, contrasena);
+        return queryFindCedula.getSingleResult();
     }
 
     @GET

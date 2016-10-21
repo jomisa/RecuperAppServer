@@ -77,12 +77,9 @@ public class MedicamentosFacadeREST extends AbstractFacade<Medicamentos> {
     @Path("misMedicamentos/{cedula}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MisMedicamentos> misMedicamentos(@PathParam("cedula") Integer c) {
-        
-        System.out.println(c);
-        
         TypedQuery<MisMedicamentos> misMedicamentosquery = em.createNamedQuery("misMedicamentos", MisMedicamentos.class);
+        misMedicamentosquery.setParameter(1, c+"");
         List<MisMedicamentos> misMedicamentos = misMedicamentosquery.getResultList();
-        
         return misMedicamentos;
     }
 
