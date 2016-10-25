@@ -6,11 +6,31 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body bgcolor="#9e9e9e">
+ 
+        <form action="menu.html">
+            <div>Bienvenido a la Página de gestión de RecuperApp</div>
+
+              <div class="container">
+                <label><b>Usuario</b></label>
+                <input type="text" placeholder="Ingrese el nombre de usuario" name="uname" required>
+
+                <label><b>Contraseña</b></label>
+                <input type="password" placeholder="Ingrese la contraseña" name="psw" required>
+
+                <button type="submit" >Login</button>
+              </div>
+
+              <div class="container" style="background-color:#9e9e9e">
+                <button type="button" class="cancelbtn">Cancelar</button>
+                <span class="psw">Olvidó la <a href="#">contraseña?</a></span>
+              </div>
+        </form>
     </body>
+    
+    
 </html>

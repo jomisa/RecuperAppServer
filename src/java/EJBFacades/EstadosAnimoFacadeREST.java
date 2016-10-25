@@ -5,14 +5,11 @@
  */
 package EJBFacades;
 
-import Entities.Pacientes;
+import Entities.EstadosAnimo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -28,28 +25,28 @@ import javax.ws.rs.core.MediaType;
  * @author jmss1
  */
 @Stateless
-@Path("pacientes")
-public class PacientesFacadeREST extends AbstractFacade<Pacientes> {
+@Path("estadosAnimo")
+public class EstadosAnimoFacadeREST extends AbstractFacade<EstadosAnimo> {
 
     @PersistenceContext(unitName = "RecuperAppServerPU")
     private EntityManager em;
 
-    public PacientesFacadeREST() {
-        super(Pacientes.class);
+    public EstadosAnimoFacadeREST() {
+        super(EstadosAnimo.class);
     }
 
     @POST
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Pacientes create(Pacientes entity) {
+    public EstadosAnimo create(EstadosAnimo entity) {
         return super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Pacientes entity) {
+    public void edit(@PathParam("id") Integer id, EstadosAnimo entity) {
         super.edit(entity);
     }
 
@@ -62,35 +59,21 @@ public class PacientesFacadeREST extends AbstractFacade<Pacientes> {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Pacientes find(@PathParam("id") Integer id) {
+    public EstadosAnimo find(@PathParam("id") Integer id) {
         return super.find(id);
-    }
-    
-    @GET
-    @Path("findPaciente/{cedula}/{contrasena}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Pacientes findPaciente(@PathParam("cedula") Integer cedula, @PathParam("contrasena") String contrasena) {
-        try{
-            TypedQuery<Pacientes> queryFindCedula = em.createNamedQuery("verificarPaciente",Pacientes.class);
-            queryFindCedula.setParameter(1, cedula);
-            queryFindCedula.setParameter(2, contrasena);
-            return queryFindCedula.getSingleResult();
-        } catch(NoResultException e) {
-            return null;
-        }
     }
 
     @GET
     @Override
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Pacientes> findAll() {
+    public List<EstadosAnimo> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Pacientes> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<EstadosAnimo> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
